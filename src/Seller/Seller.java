@@ -1,3 +1,7 @@
+package Seller;
+
+import Product.Product;
+
 import java.util.Random;
 
 public class Seller {
@@ -94,8 +98,10 @@ public class Seller {
     }
 
 
-    public void Highwaymen() {
-
+    public Seller Highwaymen(Seller seller) {
+        System.out.println("Разбойники большой дороги");
+        seller.setSpeed(0);
+        return seller;
     }
 
 

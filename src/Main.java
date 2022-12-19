@@ -1,12 +1,15 @@
+import City.Towns;
+import City.Way;
+import Product.Product;
+import Seller.Seller;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Random rnd = new Random();
-        Simulation simulation = new Simulation();
         Seller seller = new Seller(rnd.nextInt(100)+71);
         seller = buy(seller);
         Way way = new Way();
@@ -32,8 +35,8 @@ public class Main {
         };
 
         List<Product>laggage=new ArrayList<>();
-        System.out.println("Cash: "+seller.getMoney());
-        System.out.println("Available space: "+seller.getAvailableWeight());
+        System.out.println("Прибыль: "+seller.getMoney());
+        System.out.println("Доступное пространство: "+seller.getAvailableWeight());
         while (true){
             int i = rnd.nextInt(6);
             if (seller.getMoney()<20 || seller.getAvailableWeight()<2){
@@ -49,8 +52,8 @@ public class Main {
             System.out.println(laggage.get(i).getName()+"   "+laggage.get(i).getCost());
 
         }
-        System.out.println("Cash: "+seller.getMoney());
-        System.out.println("Available space: "+seller.getAvailableWeight());
+        System.out.println("Прибыль: "+seller.getMoney());
+        System.out.println("Доступное пространство: "+seller.getAvailableWeight());
 
         return seller;
     }
@@ -60,15 +63,14 @@ public class Main {
         way.setEndPoint(way.getStartPoint());
         while (way.getEndPoint().equals(way.getStartPoint())){
            way.setEndPoint(logistic(rnd.nextInt(7) + 1));
-           System.out.println("-----------\n"+"starting...");
+           System.out.println("\n\n-----------\n\n"+"начало...");
         }
 
 
         way.setDistance(rnd.nextInt(50)+51);
-        System.out.println("Start point: "+way.getStartPoint());
-        System.out.println("End point: "+way.getEndPoint());
-        System.out.println("Distance: "+way.getDistance() + " leagues");
-
+        System.out.println("Начальная точка: "+way.getStartPoint());
+        System.out.println("Конечная цель: "+way.getEndPoint());
+        System.out.println("Дистанция: "+way.getDistance() + " лиги");
         return way;
     }
     public static Towns logistic(int i){
@@ -97,11 +99,11 @@ public class Main {
         while (way.getDistance()>0){
             seller = event(seller);
             way.setDistance(Math.max(way.getDistance()-seller.getSpeed(), 0));
-            System.out.printf("Day %d, %d leagues left...\n",currentDay, way.getDistance());
+            System.out.printf("День %d, осталось %d лиг...\n",currentDay, way.getDistance());
             seller.setSpeed(3);
             currentDay++;
         }
-        System.out.println("arrived!");
+        System.out.println("Прибыл к точке назначения!");
         return way;
     }
     public static Seller event(Seller seller)

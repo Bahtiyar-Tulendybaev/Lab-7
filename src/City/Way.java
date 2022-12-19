@@ -1,3 +1,5 @@
+package City;
+
 public class Way {
     private Towns startPoint;
     private Towns endPoint;

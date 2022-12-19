@@ -1,3 +1,5 @@
+package City;
+
 public enum Towns {
     BISHKEK,
     OSH,

@@ -1,3 +1,7 @@
+package Product;
+
+import State.Quality;
+
 public class Product {
     private int weight;
     private String name;
