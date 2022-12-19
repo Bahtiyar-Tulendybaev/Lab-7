@@ -1,4 +1,11 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Random;
+
 public class Simulation  implements Events{
+    Random rnd = new Random();
+    Seller seller = new Seller(rnd.nextInt(100)+101);
+
     @Override
     public void anOrdinaryDay() {
 

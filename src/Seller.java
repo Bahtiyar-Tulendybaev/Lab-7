@@ -1,7 +1,31 @@
 public class Seller {
-    private int loadCapacity;
-    private int speed;
-    private double money;
+    private int loadCapacity = 20;
+    private int currentWeight = 0;
+    private Product[] laggage;
+    private int speed = 3;
+    private double money = 500;
+    public int getAvailableWeight(){
+        return loadCapacity-currentWeight;
+    }
+    public int getCurrentWeight() {
+        return currentWeight;
+    }
+
+    public Product[] getLaggage() {
+        return laggage;
+    }
+
+    public void setCurrentWeight(int currentWeight) {
+        this.currentWeight = currentWeight;
+    }
+
+    public Seller(double money){
+        this.money = money;
+    }
+
+    public void setLaggage(Product[] laggage) {
+        this.laggage = laggage;
+    }
 
     public int getLoadCapacity() {
         return loadCapacity;
