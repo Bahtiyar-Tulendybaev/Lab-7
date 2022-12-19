@@ -9,8 +9,9 @@ public class Main {
         Simulation simulation = new Simulation();
         Seller seller = new Seller(rnd.nextInt(100)+71);
         seller = buy(seller);
-
-        way();
+        Way way = new Way();
+        way = way(way);
+        way = go(way, seller);
 
     }
 
@@ -53,20 +54,22 @@ public class Main {
 
         return seller;
     }
-    public static void way(){
+    public static Way way(Way way){
         Random rnd = new Random();
-        Towns startPoint = logistic(rnd.nextInt(7)+1);
-        Towns endPoint = startPoint;
-        while (startPoint.equals(endPoint)){
-           endPoint = logistic(rnd.nextInt(7) + 1);
+        way.setStartPoint(logistic(rnd.nextInt(7)+1));
+        way.setEndPoint(way.getStartPoint());
+        while (way.getEndPoint().equals(way.getStartPoint())){
+           way.setEndPoint(logistic(rnd.nextInt(7) + 1));
            System.out.println("-----------\n"+"starting...");
         }
 
 
-        int distance = rnd.nextInt(50)+51;
-        System.out.println("Start point: "+startPoint);
-        System.out.println("End point: "+endPoint);
-        System.out.println("Distance: "+distance);
+        way.setDistance(rnd.nextInt(50)+51);
+        System.out.println("Start point: "+way.getStartPoint());
+        System.out.println("End point: "+way.getEndPoint());
+        System.out.println("Distance: "+way.getDistance());
+
+        return way;
     }
     public static Towns logistic(int i){
         Towns town = Towns.BISHKEK;
@@ -87,5 +90,18 @@ public class Main {
             break;
         }
         return town;
+    }
+//    public static Seller rain(Seller seller){
+//        seller.setSpeed();
+//    }
+    public static Way go(Way way, Seller seller){
+        int currentDay = 1;
+        while (way.getDistance()>0){
+            System.out.printf("Day %d, %d leagues left...\n",currentDay, way.getDistance());
+            way.setDistance(Math.max(way.getDistance()-seller.getSpeed(), 0));
+            currentDay++;
+        }
+        System.out.println("arrived!");
+        return way;
     }
 }
