@@ -105,7 +105,7 @@ public class Seller {
     }
 
 
-    public void RoadsideInn() {
+    public void roadsideInn() {
 
     }
 
