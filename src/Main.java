@@ -95,27 +95,27 @@ public class Main {
     public static Way go(Way way, Seller seller){
         int currentDay = 1;
         while (way.getDistance()>0){
-            System.out.printf("Day %d, %d leagues left...\n",currentDay, way.getDistance());
+            seller = event(seller);
             way.setDistance(Math.max(way.getDistance()-seller.getSpeed(), 0));
-
+            System.out.printf("Day %d, %d leagues left...\n",currentDay, way.getDistance());
+            seller.setSpeed(3);
             currentDay++;
         }
         System.out.println("arrived!");
         return way;
     }
-    public static Simulation event()
+    public static Seller event(Seller seller)
             {
-     Simulation sim = new Simulation();
      Random rnd = new Random();
      int e = rnd.nextInt(3)+1;
      switch (e){
-         case 1 : sim.anOrdinaryDay();
+         case 1 : seller.anOrdinaryDay();
          break;
-         case 2 : sim.rainyWeather();
+         case 2 : seller.rainyWeather(seller);
          break;
-         case 3: sim.smoothRoad();
+         case 3: seller.smoothRoad(seller);
      }
-     return sim;
+     return seller;
     }
 
 }

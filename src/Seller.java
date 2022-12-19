@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Seller {
     private int loadCapacity = 20;
     private int currentWeight ;
@@ -49,6 +51,61 @@ public class Seller {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public void anOrdinaryDay() {
+        System.out.println("Обычный день.");
+    }
+
+
+    public Seller rainyWeather(Seller seller) {
+        System.out.println("Дождь");
+        seller.setSpeed(seller.getSpeed() - 2 );
+        return seller;
+    }
+
+
+    public Seller smoothRoad(Seller seller) {
+        System.out.println("Ровная дорога");
+        seller.setSpeed(seller.getSpeed() + 2);
+        return seller;
+    }
+
+
+    public Seller theWheelBroke(Seller seller) {
+        System.out.println("Сломалось колесо");
+        seller.setSpeed(0);
+        return seller;
+    }
+
+
+    public Seller river(Seller seller) {
+        System.out.println("Река");
+        seller.setSpeed(0);
+        return seller;
+    }
+
+
+    public Seller iMetLocal(Seller seller) {
+        System.out.println("Встретил местного");
+        Random rnd = new Random();
+        seller.setSpeed(seller.getSpeed()+rnd.nextInt(3)+3);
+        return seller;
+    }
+
+
+    public void Highwaymen() {
+
+    }
+
+
+    public void RoadsideInn() {
+
+    }
+
+
+    public void theProductHasDeteriorated() {
+
     }
 }
 
