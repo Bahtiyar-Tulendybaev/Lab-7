@@ -98,9 +98,9 @@ public class Seller {
     }
 
 
-    public Seller Highwaymen(Seller seller) {
+    public Seller highwaymen(Seller seller) {
         System.out.println("Разбойники большой дороги");
-        seller.setSpeed(0);
+
         return seller;
     }
 

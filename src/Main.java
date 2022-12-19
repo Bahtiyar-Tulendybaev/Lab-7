@@ -35,7 +35,7 @@ public class Main {
         };
 
         List<Product>laggage=new ArrayList<>();
-        System.out.println("Прибыль: "+seller.getMoney());
+        System.out.println("Валюта: "+seller.getMoney());
         System.out.println("Доступное пространство: "+seller.getAvailableWeight());
         while (true){
             int i = rnd.nextInt(6);
@@ -52,7 +52,7 @@ public class Main {
             System.out.println(laggage.get(i).getName()+"   "+laggage.get(i).getCost());
 
         }
-        System.out.println("Прибыль: "+seller.getMoney());
+        System.out.println("Валюта: "+seller.getMoney());
         System.out.println("Доступное пространство: "+seller.getAvailableWeight());
 
         return seller;
@@ -63,7 +63,7 @@ public class Main {
         way.setEndPoint(way.getStartPoint());
         while (way.getEndPoint().equals(way.getStartPoint())){
            way.setEndPoint(logistic(rnd.nextInt(7) + 1));
-           System.out.println("\n\n-----------\n\n"+"начало...");
+           System.out.println("\n-----------\n"+"начало...");
         }
 
 
@@ -109,13 +109,21 @@ public class Main {
     public static Seller event(Seller seller)
             {
      Random rnd = new Random();
-     int e = rnd.nextInt(3)+1;
+     int e = rnd.nextInt(7)+1;
      switch (e){
          case 1 : seller.anOrdinaryDay();
          break;
          case 2 : seller.rainyWeather(seller);
          break;
          case 3: seller.smoothRoad(seller);
+         break;
+         case 4 : seller.theWheelBroke(seller);
+         break;
+         case 5: seller.river(seller);
+         break;
+         case 6: seller.iMetLocal(seller);
+         break;
+         case 7: seller.highwaymen(seller);
      }
      return seller;
     }
