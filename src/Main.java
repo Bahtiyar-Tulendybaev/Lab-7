@@ -67,7 +67,7 @@ public class Main {
         way.setDistance(rnd.nextInt(50)+51);
         System.out.println("Start point: "+way.getStartPoint());
         System.out.println("End point: "+way.getEndPoint());
-        System.out.println("Distance: "+way.getDistance());
+        System.out.println("Distance: "+way.getDistance() + " leagues");
 
         return way;
     }
@@ -91,17 +91,31 @@ public class Main {
         }
         return town;
     }
-//    public static Seller rain(Seller seller){
-//        seller.setSpeed();
-//    }
+
     public static Way go(Way way, Seller seller){
         int currentDay = 1;
         while (way.getDistance()>0){
             System.out.printf("Day %d, %d leagues left...\n",currentDay, way.getDistance());
             way.setDistance(Math.max(way.getDistance()-seller.getSpeed(), 0));
+
             currentDay++;
         }
         System.out.println("arrived!");
         return way;
     }
+    public static Simulation event()
+            {
+     Simulation sim = new Simulation();
+     Random rnd = new Random();
+     int e = rnd.nextInt(3)+1;
+     switch (e){
+         case 1 : sim.anOrdinaryDay();
+         break;
+         case 2 : sim.rainyWeather();
+         break;
+         case 3: sim.smoothRoad();
+     }
+     return sim;
+    }
+
 }

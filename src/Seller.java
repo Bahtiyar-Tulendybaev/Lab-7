@@ -1,6 +1,6 @@
 public class Seller {
     private int loadCapacity = 20;
-    private int currentWeight = 0;
+    private int currentWeight ;
     private Product[] laggage;
     private int speed = 3;
     private double money = 500;
